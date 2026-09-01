@@ -366,48 +366,6 @@
             width: 100%;
         }
 
-        /* Interactive Secret Box */
-        .secret-box-card {
-            background: linear-gradient(135deg, #fce4ec, #e3f2fd);
-            border-radius: 24px;
-            padding: clamp(25px, 6vw, 35px) 20px;
-            text-align: center;
-            cursor: pointer;
-            border: 2px dashed #ffffff;
-            box-shadow: 0 10px 22px rgba(0,0,0,0.05);
-            width: 100%;
-        }
-
-        .gift-box-icon {
-            font-size: clamp(3rem, 10vw, 4rem);
-            margin-bottom: 8px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
-        }
-
-        .reveal-text {
-            font-family: 'Fredoka', sans-serif;
-            font-size: clamp(1.05rem, 3.5vw, 1.25rem);
-            color: #5d4e4c;
-        }
-
-        .result-display {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            animation: zoomIn 0.5s ease forwards;
-        }
-
-        @keyframes zoomIn {
-            from { transform: scale(0.5); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
         /* Dress Code */
         .dresscode-pills {
             display: flex;
@@ -525,8 +483,7 @@
             You'll Be In My Heart 🎹<br>
             <span style="font-size: 0.65rem; color: #888;">Sebastian Winter (Piano Cover)</span>
         </div>
-
-        <!-- Audio local -->
+        
         <audio id="bgMusic" loop preload="auto">
             <source src="cancion.mp3" type="audio/mpeg">
         </audio>
@@ -626,22 +583,6 @@
                 </div>
             </div>
 
-            <!-- INTERACTIVE SECRET BOX -->
-            <div class="full-width">
-                <div class="secret-box-card" id="revealBox" onclick="revealGender()">
-                    <div id="boxContent">
-                        <div class="gift-box-icon">❓❓❓</div>
-                        <div class="reveal-text">¡Toca aquí para descubrir el resultado!</div>
-                        <p style="font-size:0.75rem; color:#887270; margin-top:5px;">(Mantenlo en secreto hasta el día del evento)</p>
-                    </div>
-
-                    <div class="result-display" id="resultDisplay">
-                        <div id="genderIcon" style="font-size: 4.5rem;"></div>
-                        <h2 id="genderText" style="font-family: 'Fredoka', sans-serif; font-size: 2rem; margin-top: 10px;"></h2>
-                    </div>
-                </div>
-            </div>
-
             <!-- GIFT REGISTRY / RAIN OF ENVELOPES -->
             <div class="card-block">
                 <div class="card-title">🎁 Sugerencia de Regalos</div>
@@ -702,10 +643,7 @@
     </div>
 
     <script>
-        const REVEAL_GENDER = 'boy';
-
         let votes = { boy: 0, girl: 0 };
-        let isRevealed = false;
         const audio = document.getElementById('bgMusic');
         const playBtn = document.getElementById('playAudioBtn');
 
@@ -714,7 +652,7 @@
             audio.play().then(() => {
                 playBtn.innerText = '⏸';
             }).catch(e => {
-                console.log("Autoplay bloqueado hasta interacción:", e);
+                console.log("Autoplay bloqueado:", e);
             });
         }
 
@@ -732,72 +670,6 @@
             votes[team]++;
             document.getElementById('countBoy').innerText = votes.boy;
             document.getElementById('countGirl').innerText = votes.girl;
-        }
-
-        function revealGender() {
-            if (isRevealed) return;
-            isRevealed = true;
-
-            document.getElementById('boxContent').style.display = 'none';
-            const display = document.getElementById('resultDisplay');
-            display.style.display = 'flex';
-
-            const genderText = document.getElementById('genderText');
-            const genderIcon = document.getElementById('genderIcon');
-
-            if (REVEAL_GENDER === 'boy') {
-                genderText.innerText = '¡ES UN NIÑO! 👦💙';
-                genderText.style.color = '#1976d2';
-                genderIcon.innerText = '🧸🍼💙';
-                launchConfetti(['#64b5f6', '#1976d2', '#ffffff', '#bbdefb']);
-            } else {
-                genderText.innerText = '¡ES UNA NIÑA! 👧💖';
-                genderText.style.color = '#d81b60';
-                genderIcon.innerText = '👑🎀💖';
-                launchConfetti(['#f28ab2', '#d81b60', '#ffffff', '#f8bbd0']);
-            }
-        }
-
-        function launchConfetti(colors) {
-            const canvas = document.getElementById('confetti-canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            const particles = [];
-            for (let i = 0; i < 200; i++) {
-                particles.push({
-                    x: canvas.width / 2,
-                    y: canvas.height / 2,
-                    vx: (Math.random() - 0.5) * 16,
-                    vy: (Math.random() - 0.5) * 16 - 4,
-                    size: Math.random() * 8 + 4,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    gravity: 0.15,
-                    opacity: 1
-                });
-            }
-
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach((p) => {
-                    p.x += p.vx;
-                    p.y += p.vy;
-                    p.vy += p.gravity;
-                    p.opacity -= 0.005;
-
-                    ctx.fillStyle = p.color;
-                    ctx.globalAlpha = Math.max(p.opacity, 0);
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    ctx.fill();
-                });
-
-                if (particles.some(p => p.opacity > 0)) {
-                    requestAnimationFrame(animate);
-                }
-            }
-            animate();
         }
 
         // Countdown Timer
