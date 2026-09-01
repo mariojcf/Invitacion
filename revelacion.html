@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>Revelación de Sexo | Dannya y Mario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fredoka:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink-primary: #f28ab2;
+            --pink-soft: #fce4ec;
+            --pink-accent: #d81b60;
+            --blue-primary: #64b5f6;
+            --blue-soft: #e3f2fd;
+            --blue-accent: #1976d2;
+            --bg-cream: #faf6f0;
+            --card-white: #ffffff;
+            --text-main: #4a3e3d;
+            --text-sub: #7a6b68;
+            --gold-accent: #d4af37;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            background-color: var(--bg-cream);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        .site-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 15px 80px;
+        }
+
+        .header-section {
+            text-align: center;
+            padding: 25px 15px 35px;
+        }
+
+        .decor-line {
+            color: var(--pink-primary);
+            letter-spacing: 2px;
+            font-size: clamp(0.75rem, 2.5vw, 0.95rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .main-names {
+            font-family: 'Alex Brush', cursive;
+            font-size: clamp(3.2rem, 8vw, 5.2rem);
+            color: var(--text-main);
+            line-height: 1.1;
+            margin: 12px 0;
+        }
+
+        .main-names span.and {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            color: var(--pink-primary);
+            font-family: 'Montserrat', sans-serif;
+            vertical-align: middle;
+        }
+
+        .event-subtitle {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(1.1rem, 3.8vw, 1.4rem);
+            color: #685b59;
+            margin-top: 5px;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-layout {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .full-width {
+                grid-column: span 2;
+            }
+        }
+
+        .card-block {
+            background: white;
+            border-radius: 24px;
+            padding: clamp(20px, 4vw, 30px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border: 1px solid #f2e6e1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(1.15rem, 3.5vw, 1.35rem);
+            color: var(--text-main);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Envelope Overlay Screen */
+        .envelope-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            background: linear-gradient(135deg, #fce4ec 0%, #e3f2fd 100%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+            text-align: center;
+        }
+
+        .envelope-overlay.opened {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-100%);
+        }
+
+        .envelope-card {
+            background: white;
+            padding: clamp(25px, 6vw, 40px) clamp(20px, 4vw, 30px);
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            border: 1px solid #f0d5e1;
+            width: 100%;
+            max-width: 440px;
+            position: relative;
+        }
+
+        .envelope-card .monogram {
+            font-family: 'Alex Brush', cursive;
+            font-size: clamp(3rem, 10vw, 4.2rem);
+            background: linear-gradient(45deg, var(--pink-primary), var(--blue-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .envelope-card h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #6a5a58;
+            margin-bottom: 15px;
+        }
+
+        .wax-seal {
+            width: clamp(70px, 18vw, 85px);
+            height: clamp(70px, 18vw, 85px);
+            background: linear-gradient(135deg, #e06d88, #b04360);
+            border-radius: 50%;
+            margin: 20px auto 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: clamp(1.8rem, 5vw, 2.3rem);
+            cursor: pointer;
+            box-shadow: 0 8px 22px rgba(176, 67, 96, 0.4);
+            border: 3px solid #f8bbd0;
+            animation: pulse-seal 2s infinite;
+        }
+
+        @keyframes pulse-seal {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+            100% { transform: scale(1); }
+        }
+
+        .seal-instruction {
+            font-size: 0.85rem;
+            color: #887270;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        /* Floating Audio Control Bar */
+        .audio-float {
+            position: fixed;
+            bottom: clamp(15px, 4vw, 25px);
+            right: clamp(15px, 4vw, 25px);
+            z-index: 900;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(242, 138, 178, 0.35);
+            border-radius: 35px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .play-btn-mini {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink-primary), var(--blue-primary));
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .audio-text {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+
+        /* Countdown Timer */
+        .timer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: clamp(6px, 2vw, 12px);
+            margin: 15px 0 20px;
+            width: 100%;
+        }
+
+        .time-box {
+            background: linear-gradient(180deg, #fff5f8 0%, #eef7ff 100%);
+            border-radius: 16px;
+            padding: clamp(10px, 3vw, 14px) clamp(8px, 2vw, 12px);
+            flex: 1 1 65px;
+            min-width: 65px;
+            max-width: 90px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8), 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .time-box .number {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(1.4rem, 5vw, 1.8rem);
+            font-weight: 600;
+            color: #554846;
+        }
+
+        .time-box .label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94827f;
+            margin-top: 2px;
+        }
+
+        .btn-calendar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #ffffff;
+            border: 1.5px solid var(--pink-primary);
+            color: var(--pink-accent);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: clamp(0.8rem, 2.8vw, 0.9rem);
+            font-weight: 700;
+            text-decoration: none;
+            width: 100%;
+            max-width: 320px;
+            transition: all 0.2s ease;
+        }
+
+        /* Location Card */
+        .location-info {
+            font-size: clamp(0.88rem, 3vw, 0.98rem);
+            line-height: 1.6;
+            color: var(--text-sub);
+            margin-bottom: 16px;
+        }
+
+        .location-info strong {
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: clamp(0.85rem, 2.8vw, 0.92rem);
+            font-weight: 700;
+            border: 1.5px solid #81c784;
+            color: #2e7d32;
+            background: #f1f8e9;
+            width: 100%;
+            max-width: 320px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        /* Voting Section */
+        .vote-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .btn-team {
+            padding: 16px 10px;
+            border: none;
+            border-radius: 18px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(0.95rem, 3.2vw, 1.1rem);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-team:active { transform: scale(0.95); }
+        .btn-team-boy { background: linear-gradient(135deg, #64b5f6, #1e88e5); }
+        .btn-team-girl { background: linear-gradient(135deg, #f28ab2, #d81b60); }
+
+        .vote-results {
+            display: flex;
+            justify-content: space-around;
+            background: #faf6f5;
+            padding: 12px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: clamp(0.85rem, 3vw, 0.95rem);
+            width: 100%;
+        }
+
+        /* Interactive Secret Box */
+        .secret-box-card {
+            background: linear-gradient(135deg, #fce4ec, #e3f2fd);
+            border-radius: 24px;
+            padding: clamp(25px, 6vw, 35px) 20px;
+            text-align: center;
+            cursor: pointer;
+            border: 2px dashed #ffffff;
+            box-shadow: 0 10px 22px rgba(0,0,0,0.05);
+            width: 100%;
+        }
+
+        .gift-box-icon {
+            font-size: clamp(3rem, 10vw, 4rem);
+            margin-bottom: 8px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        .reveal-text {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(1.05rem, 3.5vw, 1.25rem);
+            color: #5d4e4c;
+        }
+
+        .result-display {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            animation: zoomIn 0.5s ease forwards;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Dress Code */
+        .dresscode-pills {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .color-pill {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+        }
+
+        /* RSVP Form */
+        .rsvp-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #6a5a58;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 13px 15px;
+            border-radius: 14px;
+            border: 1px solid #e2d4cf;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.9rem, 3vw, 0.98rem);
+            outline: none;
+            background: #fdfbfb;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--pink-primary), var(--blue-primary));
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 16px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(1rem, 3.5vw, 1.1rem);
+            cursor: pointer;
+            margin-top: 5px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            width: 100%;
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: clamp(0.85rem, 3vw, 0.92rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 2000;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- 1. ENVELOPE / SEAL OVERLAY -->
+    <div class="envelope-overlay" id="envelopeOverlay">
+        <div class="envelope-card">
+            <div class="monogram">D & M</div>
+            <h2>Revelación de Sexo</h2>
+            <p style="font-size: clamp(0.85rem, 3vw, 0.95rem); color: #7a6b68;">Tenemos una hermosa noticia que compartir contigo</p>
+
+            <div class="wax-seal" onclick="openEnvelope()">
+                ✨
+            </div>
+            <div class="seal-instruction">Toca el sello para abrir tu invitación</div>
+        </div>
+    </div>
+
+    <!-- FLOATING MUSIC PLAYER -->
+    <div class="audio-float">
+        <button class="play-btn-mini" id="playAudioBtn" onclick="toggleAudio()">▶</button>
+        <div class="audio-text">
+            You'll Be In My Heart 🎹<br>
+            <span style="font-size: 0.65rem; color: #888;">Sebastian Winter (Piano Cover)</span>
+        </div>
+
+        <!-- Audio local -->
+        <audio id="bgMusic" loop preload="auto">
+            <source src="cancion.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- 2. INVITATION MAIN CONTENT -->
+    <div class="site-container">
+
+        <!-- Header Names -->
+        <div class="header-section">
+            <div class="decor-line">✦ TE INVITAMOS A NUESTRA ✦</div>
+            <h1 style="font-family: 'Fredoka', sans-serif; font-size: clamp(1.8rem, 5vw, 2.5rem); color: #554846; margin-bottom: 4px;">REVELACIÓN DE SEXO</h1>
+            <div class="event-subtitle">¿Será niño o será niña? 🐝🧸</div>
+
+            <div class="main-names">
+                Dannya <span class="and">&</span> Mario
+            </div>
+
+            <p style="font-style: italic; font-size: clamp(0.85rem, 2.8vw, 1rem); color: #887270; max-width: 600px; margin: 0 auto;">
+                "Sea niño o niña, sé que igual me llenará de mucho amor..."
+            </p>
+        </div>
+
+        <div class="grid-layout">
+
+            <!-- COUNTDOWN TIMER -->
+            <div class="card-block">
+                <div class="card-title">⏳ Solo faltan:</div>
+                <div class="timer-container">
+                    <div class="time-box">
+                        <div class="number" id="days">00</div>
+                        <div class="label">Días</div>
+                    </div>
+                    <div class="time-box">
+                        <div class="number" id="hours">00</div>
+                        <div class="label">Horas</div>
+                    </div>
+                    <div class="time-box">
+                        <div class="number" id="minutes">00</div>
+                        <div class="label">Min</div>
+                    </div>
+                    <div class="time-box">
+                        <div class="number" id="seconds">00</div>
+                        <div class="label">Seg</div>
+                    </div>
+                </div>
+
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Revelaci%C3%B3n+de+G%C3%A9nero+-+Dannya+y+Mario&dates=20261004T210000Z/20261005T000000Z&details=Acompa%C3%B1anos+a+descubrir+si+ser%C3%A1+ni%C3%B1o+o+ni%C3%B1a.&location=Sal%C3%B3n+de+la+Iglesia+Inmaculada+Concepci%C3%B3n+de+Mar%C3%ADa,+Colinas+3,+Ciudad+Quetzal" target="_blank" class="btn-calendar">
+                    📅 Agendar en Google Calendar
+                </a>
+            </div>
+
+            <!-- DATE & LOCATION DETAILS -->
+            <div class="card-block">
+                <div class="card-title">⛪ ¿Dónde & Cuándo?</div>
+                <div class="location-info">
+                    <strong>4 de Octubre de 2026</strong><br>
+                    ⏰ Hora: 3:00 PM<br><br>
+                    <strong>Salón de la Iglesia Inmaculada Concepción de María</strong><br>
+                    📍 Colinas 3, Ciudad Quetzal
+                </div>
+
+                <a href="https://maps.google.com/?cid=10237540976114537031" target="_blank" class="btn-nav">
+                    🗺️ Ver en Google Maps
+                </a>
+            </div>
+
+            <!-- TEAM VOTING -->
+            <div class="card-block">
+                <div class="card-title">📋 ¿Cuál es tu predicción?</div>
+                <div class="vote-grid">
+                    <button class="btn-team btn-team-boy" onclick="vote('boy')">
+                        👶<span>Team Niño</span>
+                    </button>
+                    <button class="btn-team btn-team-girl" onclick="vote('girl')">
+                        👧<span>Team Niña</span>
+                    </button>
+                </div>
+                <div class="vote-results">
+                    <span style="color: var(--blue-accent);">Niño: <span id="countBoy">0</span></span>
+                    <span style="color: var(--pink-accent);">Niña: <span id="countGirl">0</span></span>
+                </div>
+            </div>
+
+            <!-- DRESS CODE -->
+            <div class="card-block">
+                <div class="card-title">👗 Código de Vestimenta</div>
+                <p style="font-size: 0.9rem; color: var(--text-sub);">
+                    <strong>Casual Elegante en tonos Pastel</strong><br>
+                    Te invitamos a vestir ropa cómoda con colores blanco, rosa pastel o azul pastel.
+                </p>
+                <div class="dresscode-pills">
+                    <div class="color-pill" style="background: #ffffff; border: 1px solid #ccc;"></div>
+                    <div class="color-pill" style="background: #fce4ec;"></div>
+                    <div class="color-pill" style="background: #e3f2fd;"></div>
+                    <div class="color-pill" style="background: #fff9c4;"></div>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE SECRET BOX -->
+            <div class="full-width">
+                <div class="secret-box-card" id="revealBox" onclick="revealGender()">
+                    <div id="boxContent">
+                        <div class="gift-box-icon">❓❓❓</div>
+                        <div class="reveal-text">¡Toca aquí para descubrir el resultado!</div>
+                        <p style="font-size:0.75rem; color:#887270; margin-top:5px;">(Mantenlo en secreto hasta el día del evento)</p>
+                    </div>
+
+                    <div class="result-display" id="resultDisplay">
+                        <div id="genderIcon" style="font-size: 4.5rem;"></div>
+                        <h2 id="genderText" style="font-family: 'Fredoka', sans-serif; font-size: 2rem; margin-top: 10px;"></h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GIFT REGISTRY / RAIN OF ENVELOPES -->
+            <div class="card-block">
+                <div class="card-title">🎁 Sugerencia de Regalos</div>
+                <p style="font-size: 0.9rem; color: var(--text-sub); line-height: 1.5;">
+                    El regalo más valioso para nosotros es tu presencia. Si deseas tener un detalle con nosotros, contaremos con <strong>Lluvia de Sobres ✉️</strong> el día del evento.
+                </p>
+            </div>
+
+            <!-- RSVP INTEGRATED FORM -->
+            <div class="card-block">
+                <div class="card-title">✍️ Confirmación de Asistencia (RSVP)</div>
+                <p style="font-size: 0.85rem; color: #7a6b68; margin-bottom: 15px;">Favor de confirmar tu asistencia antes del 20 de Septiembre de 2026.</p>
+
+                <form class="rsvp-form" onsubmit="submitRSVP(event)">
+                    <div class="form-group">
+                        <label>Nombre y Apellido:</label>
+                        <input type="text" class="form-control" id="rsvpName" required placeholder="Ej. Familia Corado">
+                    </div>
+
+                    <div class="form-group">
+                        <label>¿Nos acompañarás?</label>
+                        <select class="form-control" id="rsvpStatus" required>
+                            <option value="Confirmado">¡Sí, ahí estaré con mucho gusto!</option>
+                            <option value="No asistiré">Lamentablemente no podré asistir</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Número de pases asignados:</label>
+                        <select class="form-control" id="rsvpPasses">
+                            <option value="1 Persona">1 Persona</option>
+                            <option value="2 Personas" selected>2 Personas</option>
+                            <option value="3 Personas">3 Personas</option>
+                            <option value="4 Personas">4 Personas</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mensaje para los papás:</label>
+                        <textarea class="form-control" id="rsvpMsg" rows="2" placeholder="¡Escríbenos un lindo mensaje!"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Enviar Confirmación ✨</button>
+                </form>
+
+                <a href="#" id="waLink" target="_blank" class="btn-whatsapp">
+                    📱 Confirmar directamente por WhatsApp
+                </a>
+            </div>
+
+        </div>
+
+        <div style="text-align: center; color: #a08f8c; font-size: 0.85rem; margin-top: 30px;">
+            Con amor, Dannya & Mario 💕<br>
+            ¡Nos vemos pronto!
+        </div>
+
+    </div>
+
+    <script>
+        const REVEAL_GENDER = 'boy';
+
+        let votes = { boy: 0, girl: 0 };
+        let isRevealed = false;
+        const audio = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playAudioBtn');
+
+        function openEnvelope() {
+            document.getElementById('envelopeOverlay').classList.add('opened');
+            audio.play().then(() => {
+                playBtn.innerText = '⏸';
+            }).catch(e => {
+                console.log("Autoplay bloqueado hasta interacción:", e);
+            });
+        }
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerText = '⏸';
+            } else {
+                audio.pause();
+                playBtn.innerText = '▶';
+            }
+        }
+
+        function vote(team) {
+            votes[team]++;
+            document.getElementById('countBoy').innerText = votes.boy;
+            document.getElementById('countGirl').innerText = votes.girl;
+        }
+
+        function revealGender() {
+            if (isRevealed) return;
+            isRevealed = true;
+
+            document.getElementById('boxContent').style.display = 'none';
+            const display = document.getElementById('resultDisplay');
+            display.style.display = 'flex';
+
+            const genderText = document.getElementById('genderText');
+            const genderIcon = document.getElementById('genderIcon');
+
+            if (REVEAL_GENDER === 'boy') {
+                genderText.innerText = '¡ES UN NIÑO! 👦💙';
+                genderText.style.color = '#1976d2';
+                genderIcon.innerText = '🧸🍼💙';
+                launchConfetti(['#64b5f6', '#1976d2', '#ffffff', '#bbdefb']);
+            } else {
+                genderText.innerText = '¡ES UNA NIÑA! 👧💖';
+                genderText.style.color = '#d81b60';
+                genderIcon.innerText = '👑🎀💖';
+                launchConfetti(['#f28ab2', '#d81b60', '#ffffff', '#f8bbd0']);
+            }
+        }
+
+        function launchConfetti(colors) {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            for (let i = 0; i < 200; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    vx: (Math.random() - 0.5) * 16,
+                    vy: (Math.random() - 0.5) * 16 - 4,
+                    size: Math.random() * 8 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    gravity: 0.15,
+                    opacity: 1
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach((p) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += p.gravity;
+                    p.opacity -= 0.005;
+
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = Math.max(p.opacity, 0);
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                if (particles.some(p => p.opacity > 0)) {
+                    requestAnimationFrame(animate);
+                }
+            }
+            animate();
+        }
+
+        // Countdown Timer
+        const targetDate = new Date('October 4, 2026 15:00:00').getTime();
+        function updateTimer() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            }
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // RSVP Form
+        function submitRSVP(e) {
+            e.preventDefault();
+            const name = document.getElementById('rsvpName').value;
+            const status = document.getElementById('rsvpStatus').value;
+            const passes = document.getElementById('rsvpPasses').value;
+            const msg = document.getElementById('rsvpMsg').value;
+
+            const text = `¡Hola Dannya y Mario!%0A*Confirmación de Asistencia - Revelación de Sexo*%0A%0A👤 *Nombre:* ${encodeURIComponent(name)}%0A✅ *Estado:* ${encodeURIComponent(status)}%0A🎟️ *Pases:* ${encodeURIComponent(passes)}%0A💬 *Mensaje:* ${encodeURIComponent(msg)}`;
+
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+
+        document.getElementById('waLink').onclick = function(e) {
+            e.preventDefault();
+            const text = `¡Hola Dannya y Mario! Quisiera confirmar mi asistencia a la Revelación de Sexo 👶✨`;
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        };
+    </script>
+</body>
+</html>
