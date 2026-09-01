@@ -643,6 +643,8 @@
     </div>
 
     <script>
+        const PHONE_NUMBER = "50254699450";
+
         let votes = { boy: 0, girl: 0 };
         const audio = document.getElementById('bgMusic');
         const playBtn = document.getElementById('playAudioBtn');
@@ -703,14 +705,15 @@
 
             const text = `¡Hola Dannya y Mario!%0A*Confirmación de Asistencia - Revelación de Sexo*%0A%0A👤 *Nombre:* ${encodeURIComponent(name)}%0A✅ *Estado:* ${encodeURIComponent(status)}%0A🎟️ *Pases:* ${encodeURIComponent(passes)}%0A💬 *Mensaje:* ${encodeURIComponent(msg)}`;
 
-            window.open(`https://wa.me/?text=${text}`, '_blank');
+            window.open(`https://wa.me/${PHONE_NUMBER}?text=${text}`, '_blank');
         }
 
         document.getElementById('waLink').onclick = function(e) {
             e.preventDefault();
             const text = `¡Hola Dannya y Mario! Quisiera confirmar mi asistencia a la Revelación de Sexo 👶✨`;
-            window.open(`https://wa.me/?text=${text}`, '_blank');
+            window.open(`https://wa.me/${PHONE_NUMBER}?text=${text}`, '_blank');
         };
     </script>
 </body>
+</html>
 </html>
