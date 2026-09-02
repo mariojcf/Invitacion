@@ -382,6 +382,51 @@
             box-shadow: 0 3px 6px rgba(0,0,0,0.12);
         }
 
+        /* Gift Suggestions Styling */
+        .gift-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .gift-item {
+            background: #faf6f5;
+            border-radius: 16px;
+            padding: 14px 16px;
+            border-left: 4px solid var(--pink-primary);
+        }
+
+        .gift-item-boy {
+            border-left-color: var(--blue-primary);
+        }
+
+        .gift-item-girl {
+            border-left-color: var(--pink-primary);
+        }
+
+        .gift-item-envelope {
+            border-left-color: var(--gold-accent);
+        }
+
+        .gift-item-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .gift-item-desc {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            line-height: 1.4;
+        }
+
         /* RSVP Form */
         .rsvp-form {
             display: flex;
@@ -583,16 +628,33 @@
                 </div>
             </div>
 
-            <!-- GIFT REGISTRY / RAIN OF ENVELOPES -->
-            <div class="card-block">
+            <!-- GIFT REGISTRY / DYNAMICS -->
+            <div class="card-block full-width">
                 <div class="card-title">🎁 Sugerencia de Regalos</div>
-                <p style="font-size: 0.9rem; color: var(--text-sub); line-height: 1.5;">
-                    El regalo más valioso para nosotros es tu presencia. Si deseas tener un detalle con nosotros, contaremos con <strong>Lluvia de Sobres ✉️</strong> el día del evento.
+                <p style="font-size: 0.9rem; color: var(--text-sub); line-height: 1.5; margin-bottom: 10px;">
+                    Tu presencia es nuestro mayor regalo 🎁. Si deseas hacernos un detalle, puedes sumarte a la dinámica ✨:
                 </p>
+
+                <div class="gift-options">
+                    <div class="gift-item gift-item-envelope">
+                        <div class="gift-item-title">✉️ Lluvia de sobres</div>
+                        <div class="gift-item-desc">Contaremos con un buzón el día del evento para el fondo del bebé 👶🏻💰.</div>
+                    </div>
+
+                    <div class="gift-item gift-item-boy">
+                        <div class="gift-item-title">👦🏻 Team Varón</div>
+                        <div class="gift-item-desc">Si crees que será niño, apóyanos con pañales (etapas 1, 2 o 3) 🍼 o toallitas húmedas 🧻.</div>
+                    </div>
+
+                    <div class="gift-item gift-item-girl">
+                        <div class="gift-item-title">👧🏻 Team Niña</div>
+                        <div class="gift-item-desc">Si crees que será niña, apóyanos con prendas o un detalle en colores neutros 🤍💛🩶 (blanco, beige, crema, gris o amarillo, de 3 a 12 meses).</div>
+                    </div>
+                </div>
             </div>
 
             <!-- RSVP INTEGRATED FORM -->
-            <div class="card-block">
+            <div class="card-block full-width">
                 <div class="card-title">✍️ Confirmación de Asistencia (RSVP)</div>
                 <p style="font-size: 0.85rem; color: #7a6b68; margin-bottom: 15px;">Favor de confirmar tu asistencia antes del 20 de Septiembre de 2026.</p>
 
@@ -715,5 +777,4 @@
         };
     </script>
 </body>
-</html>
 </html>
