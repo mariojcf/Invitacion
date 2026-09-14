@@ -45,7 +45,7 @@
 
         .header-section {
             text-align: center;
-            padding: 25px 15px 35px;
+            padding: 25px 15px 20px;
         }
 
         .decor-line {
@@ -77,6 +77,28 @@
             font-size: clamp(1.1rem, 3.8vw, 1.4rem);
             color: #685b59;
             margin-top: 5px;
+        }
+
+        /* Estilo para la galería de ositos en el encabezado */
+        .bears-header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 20px auto 10px;
+            max-width: 500px;
+        }
+
+        .bear-img {
+            height: clamp(110px, 22vw, 160px);
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.08));
+            transition: transform 0.3s ease;
+        }
+
+        .bear-img:hover {
+            transform: scale(1.05);
         }
 
         .grid-layout {
@@ -543,6 +565,12 @@
             <h1 style="font-family: 'Fredoka', sans-serif; font-size: clamp(1.8rem, 5vw, 2.5rem); color: #554846; margin-bottom: 4px;">REVELACIÓN DE SEXO</h1>
             <div class="event-subtitle">¿Será niño o será niña? 🐝🧸</div>
 
+            <!-- GALERÍA DE OSITOS EN EL ENCABEZADO -->
+            <div class="bears-header-container">
+                <img src="74734.png" alt="Osito Pooh Niño" class="bear-img">
+                <img src="74748.png" alt="Osita Pooh Niña" class="bear-img">
+            </div>
+
             <div class="main-names">
                 Dannya <span class="and">&</span> Mario
             </div>
@@ -576,7 +604,7 @@
                     </div>
                 </div>
 
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Revelaci%C3%B3n+de+G%C3%A9nero+-+Dannya+y+Mario&dates=20260927    T210000Z/20261005T000000Z&details=Acompa%C3%B1anos+a+descubrir+si+ser%C3%A1+ni%C3%B1o+o+ni%C3%B1a.&location=Sal%C3%B3n+de+la+Iglesia+Inmaculada+Concepci%C3%B3n+de+Mar%C3%ADa,+Colinas+3,+Ciudad+Quetzal" target="_blank" class="btn-calendar">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Revelaci%C3%B3n+de+Sexo+-+Dannya+y+Mario&dates=20260927T210000Z/20260928T000000Z&details=Acompa%C3%B1anos+a+descubrir+si+ser%C3%A1+ni%C3%B1o+o+ni%C3%B1a.&location=Sal%C3%B3n+de+la+Iglesia+Inmaculada+Concepci%C3%B3n+de+Mar%C3%ADa,+Colinas+3,+Ciudad+Quetzal" target="_blank" class="btn-calendar">
                     📅 Agendar en Google Calendar
                 </a>
             </div>
@@ -649,7 +677,7 @@
 
                     <div class="gift-item gift-item-girl">
                         <div class="gift-item-title">👧🏻 Team Niña</div>
-                        <div class="gift-item-desc">Si crees que será niña, apóyanos con prendas o un detalle en colores neutros 🤍💛🩶 (blanco, beige, crema, gris o amarillo, de 3 a 12 meses).</div>
+                        <div class="gift-item-desc">Si crees que será niña, apóyanos con prendas o un detalle en colores neutros 🤍💛 (blanco, beige, crema, gris o amarillo, de 3 a 12 meses).</div>
                     </div>
                 </div>
             </div>
@@ -680,7 +708,7 @@
                             <option value="2 Personas" selected>2 Personas</option>
                             <option value="3 Personas">3 Personas</option>
                             <option value="4 Personas">4 Personas</option>
-                            <option value=" O mas personas"> Mas de 4 personas</option>
+                            <option value="Más de 4 personas">Más de 4 personas</option>
                         </select>
                     </div>
 
@@ -739,7 +767,7 @@
         }
 
         // Countdown Timer
-        const targetDate = new Date('October 4, 2026 15:00:00').getTime();
+        const targetDate = new Date('September 27, 2026 15:00:00').getTime();
         function updateTimer() {
             const now = new Date().getTime();
             const diff = targetDate - now;
@@ -767,15 +795,15 @@
             const passes = document.getElementById('rsvpPasses').value;
             const msg = document.getElementById('rsvpMsg').value;
 
-            const text = `¡Hola Dannya y Mario!%0A*Confirmación de Asistencia - Revelación de Sexo*%0A%0A👤 *Nombre:* ${encodeURIComponent(name)}%0A✅ *Estado:* ${encodeURIComponent(status)}%0A🎟️ *Pases:* ${encodeURIComponent(passes)}%0A💬 *Mensaje:* ${encodeURIComponent(msg)}`;
+            const fullText = `¡Hola Dannya y Mario!\n*Confirmación de Asistencia - Revelación de Sexo*\n\n👤 *Nombre:* ${name}\n✅ *Estado:* ${status}\n🎟️ *Pases:* ${passes}\n💬 *Mensaje:* ${msg}`;
 
-            window.open(`https://wa.me/${PHONE_NUMBER}?text=${text}`, '_blank');
+            window.open(`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(fullText)}`, '_blank');
         }
 
         document.getElementById('waLink').onclick = function(e) {
             e.preventDefault();
-            const text = `¡Hola Dannya y Mario! Quisiera confirmar mi asistencia a la Revelación de Sexo 👶✨`;
-            window.open(`https://wa.me/${PHONE_NUMBER}?text=${text}`, '_blank');
+            const fullText = `¡Hola Dannya y Mario! Quisiera confirmar mi asistencia a la Revelación de Sexo 👶✨`;
+            window.open(`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(fullText)}`, '_blank');
         };
     </script>
 </body>
